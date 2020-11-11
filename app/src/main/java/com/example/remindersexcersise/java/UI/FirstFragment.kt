@@ -5,6 +5,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.remindersexcersise.R
 import com.example.remindersexcersise.java.Model.Reminder
+import kotlinx.android.synthetic.main.fragment_second.*
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -26,6 +27,7 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
         activity?.setTitle("Reminderslist")
+
     }
 
 
