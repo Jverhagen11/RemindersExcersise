@@ -4,12 +4,34 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.remindersexcersise.java.Model.Reminder
+import com.example.remindersexcersise.java.Repository.ReminderRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class RemindersViewModel(application: Application)  : AndroidViewModel(application) {
 
-//    private val ioScope = CoroutineScope(Dispatchers.IO)
-//    private val reminderRepository = ReminderRepository(application.applicationContext)
-//    val reminders: LiveData<List<Reminder>> = reminderRepository.getAllReminders()
+    private val ioScope = CoroutineScope(Dispatchers.IO)
+    private val reminderRepository = ReminderRepository(application.applicationContext)
+    val reminders: LiveData<List<Reminder>> = reminderRepository.getAllReminders()
+
+
+    fun insertReminder(reminder: Reminder) {
+        ioScope.launch {
+            reminderRepository.insertReminder(reminder)
+        }
+    }
+
+    fun deleteAllReminders(){
+        ioScope.launch {
+            reminderRepository.deleteAllReminders()
+        }
+    }
+
+
+    fun deleteReminder(reminder: Reminder) {
+        ioScope.launch {
+            reminderRepository.deleteReminder(reminder)
+        }
+    }
 }

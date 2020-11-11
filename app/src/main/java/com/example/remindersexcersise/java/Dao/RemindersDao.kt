@@ -13,9 +13,13 @@ interface RemindersDao {
     @Insert
     suspend fun insertReminder(reminder: Reminder)
 
-    @Delete
-    suspend fun deleteReminder(reminder: Reminder)
+
+    @Query("DELETE FROM reminderTable")
+    suspend fun deleteAllReminders()
 
     @Update
     suspend fun updateReminder(reminder: Reminder)
+
+    @Delete
+    suspend fun deleteReminder(reminder: Reminder)
 }

@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.remindersexcersise.R
 import com.example.remindersexcersise.databinding.FragmentSecondBinding
 import com.example.remindersexcersise.java.Model.Reminder
+import com.example.remindersexcersise.java.Viewmodel.RemindersViewModel
 import kotlinx.android.synthetic.main.fragment_second.*
 
 /**
@@ -15,6 +17,8 @@ import kotlinx.android.synthetic.main.fragment_second.*
  */
 
 class SecondFragment : Fragment() {
+
+    private val viewModel: RemindersViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -48,7 +52,7 @@ class SecondFragment : Fragment() {
         if (reminderText.isNotBlank()) {
             //set the data as fragmentResult, we are listening for REQ_REMINDER_KEY in RemindersFragment!
 
-//            viewModel.insertReminder(Reminder(reminderText))
+            viewModel.insertReminder(Reminder(reminderText))
 
             //"pop" the backstack, this means we destroy
             //this fragment and go back to the RemindersFragment

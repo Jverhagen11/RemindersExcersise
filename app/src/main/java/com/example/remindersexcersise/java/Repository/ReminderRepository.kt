@@ -28,6 +28,10 @@ class ReminderRepository(context: Context) {
         reminderDao.deleteReminder(reminder)
     }
 
+    suspend fun deleteAllReminders() {
+        reminderDao.deleteAllReminders()
+    }
+
 
     suspend fun updateReminder(reminder: Reminder) {
         reminderDao.updateReminder(reminder)

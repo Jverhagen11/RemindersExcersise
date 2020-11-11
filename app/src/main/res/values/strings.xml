@@ -11,4 +11,6 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="delete">delete</string>
     <string name="not_valid_reminder">not valid</string>
+    <string name="removed_reminder">Reminder removed</string>
+    <string name="undo">undo</string>
 </resources>
