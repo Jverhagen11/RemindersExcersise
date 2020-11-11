@@ -1,11 +1,9 @@
-package com.example.remindersexcersise
+package com.example.remindersexcersise.java.UI
 
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.Button
-import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.remindersexcersise.R
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.

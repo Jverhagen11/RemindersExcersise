@@ -1,15 +1,18 @@
-package com.example.remindersexcersise
+package com.example.remindersexcersise.java.UI
 
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.Button
-import androidx.navigation.fragment.findNavController
+import com.example.remindersexcersise.R
+import com.example.remindersexcersise.java.Model.Reminder
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FirstFragment : Fragment() {
+
+    private val reminders = arrayListOf<Reminder>()
+    private val reminderAdapter = ReminderAdapter(reminders)
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
