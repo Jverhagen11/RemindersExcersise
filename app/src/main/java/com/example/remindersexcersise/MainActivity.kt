@@ -6,23 +6,50 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var navController: NavController
+
+    private var activeMenu = R.menu.menu_delete
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+        navController = findNavController(R.id.nav_host_fragment)
+
+        //when clicking the floating action button, the navcontroller will navigate to the second fragment.
+        fab.setOnClickListener {
+            navController.navigate(
+                R.id.action_FirstFragment_to_SecondFragment
+            )
+        }
+
+        fabToggler()
+
+    }
+
+    /*
+     * Fabtoggler will hide the floating action button in the add fragment screen.
+     */
+    private fun fabToggler() {
+        navController.addOnDestinationChangedListener { _,       destination, _ ->
+            if (destination.id in arrayOf(R.id.SecondFragment)) {
+                fab.hide()
+            } else {
+                fab.show()
+            }
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
+        menuInflater.inflate(R.menu.menu_delete, menu)
         return true
     }
 
